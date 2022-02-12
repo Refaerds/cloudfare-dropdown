@@ -23,10 +23,10 @@ class Seletor extends Component {
   }
 
   componentDidMount() {
-    fetch('http://api.open-notify.org/astros.json')
+    fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => (response.json()))
-      .then(data => this.setState({ items: data.people.map(person => (person.name)).sort() }))
-      .catch(() => alert('Failed to get the list of astronauts. The dropdown will not suggest options.'))
+      .then(data => this.setState({ items: data.map(person => (person.name)).sort() }))
+      .catch(() => alert('Failed to get the list of items. The dropdown will not suggest options.'))
       .finally(() => this.setState({ loading: false }))
   }
 
@@ -125,7 +125,7 @@ class Seletor extends Component {
                     />
                   </DisplayTransition>
                   
-                  <DisplayTransition show={this.state.showSuggestedItems}>
+                  <DisplayTransition show={this.state.showSuggestedItems && (this.state.inputValue || this.state.suggestedItems.length)}>
                     <SuggestionsList options={this.state.suggestedItems} inputValue={this.state.inputValue} onSelectItem={this.selectItem} />
                   </DisplayTransition>
                   

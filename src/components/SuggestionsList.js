@@ -6,7 +6,7 @@ const SuggestionsList = ({ options, onSelectItem, inputValue }) => {
   const delay = 500;
 
   return (
-    <ul className="absolute top-full left-0 right-0 mt-4 bg-white rounded-lg py-2 text-left">
+    <ul className="absolute top-full left-0 w-max mt-4 bg-white rounded-lg py-2 text-left">
       <TransitionList items={options} delay={delay}>
         {suggestedItems => (
           suggestedItems.map((item, i) => (
